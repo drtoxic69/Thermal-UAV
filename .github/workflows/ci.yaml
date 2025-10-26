@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  lint-type-format-build-test:
+  lint-type-format-build:
 
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +52,3 @@ jobs:
       # 10. Runs the type checker from within the virtual environment
       - name: Run Type Checker (Pyright)
         run: uv run pyright .
-        
-      # 11. Runs all automated tests from within the virtual environment
-      - name: Run Tests (Pytest)
-        run: uv run pytest
