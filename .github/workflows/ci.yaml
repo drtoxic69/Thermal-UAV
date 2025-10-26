@@ -15,36 +15,45 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
-      # 2. Sets up the Python version
+      # 2. Sets up Python and enables caching for uv
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.11' # Set your team's Python version
+          cache: 'uv'
 
       # 3. Installs uv
       - name: Install uv
         run: pip install uv
 
-      # 4. Installs your CI tools
-      - name: Install Tools (Ruff & Pyright)
-        run: uv pip install ruff pyright
+      # 4. Creates the virtual environment (.venv)
+      - name: Create Virtual Environment
+        run: uv venv
+        
+      # 5. Installs all CI tools into the virtual environment
+      - name: Install Tools (Ruff, Pyright, Pytest)
+        run: uv pip install ruff pyright pytest
 
-      # 5. Check if the package can be built
+      # 6. Checks if the project is buildable as a package
       - name: Check Package Build (uv build)
         run: uv build
 
-      # 6. Install project dependencies
+      # 7. Installs all project dependencies from the lockfile
       - name: Install Project Dependencies
-        run: uv pip sync
+        run: uv sync
 
-      # 7. Runs the linter
+      # 8. Runs the linter from within the virtual environment
       - name: Run Linter (Ruff Check)
-        run: ruff check .
+        run: uv run ruff check .
       
-      # 8. Runs the formatter check
+      # 9. Runs the formatter check from within the virtual environment
       - name: Run Formatter (Ruff Format Check)
-        run: ruff format --check .
+        run: uv run ruff format --check .
         
-      # 9. Runs the type checker
+      # 10. Runs the type checker from within the virtual environment
       - name: Run Type Checker (Pyright)
-        run: pyright .
+        run: uv run pyright .
+        
+      # 11. Runs all automated tests from within the virtual environment
+      - name: Run Tests (Pytest)
+        run: uv run pytest
