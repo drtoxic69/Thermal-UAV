@@ -19,8 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Set your team's Python version
-          cache: 'uv'
+          python-version: '3.11'
 
       # 3. Installs uv
       - name: Install uv
