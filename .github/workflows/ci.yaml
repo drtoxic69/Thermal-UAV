@@ -1,0 +1,50 @@
+name: Python Code-Quality Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  lint-type-format-build-test:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      # 1. Checks out your repository's code
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      # 2. Sets up the Python version
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Installs uv
+      - name: Install uv
+        run: pip install uv
+
+      # 4. Installs your CI tools
+      - name: Install Tools (Ruff & Pyright)
+        run: uv pip install ruff pyright
+
+      # 5. Check if the package can be built
+      - name: Check Package Build (uv build)
+        run: uv build
+
+      # 6. Install project dependencies
+      - name: Install Project Dependencies
+        run: uv pip sync
+
+      # 7. Runs the linter
+      - name: Run Linter (Ruff Check)
+        run: ruff check .
+      
+      # 8. Runs the formatter check
+      - name: Run Formatter (Ruff Format Check)
+        run: ruff format --check .
+        
+      # 9. Runs the type checker
+      - name: Run Type Checker (Pyright)
+        run: pyright .
