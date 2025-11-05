@@ -7,7 +7,11 @@ requires-python = ">=3.14"
 dependencies = [
     "asyncpg>=0.30.0",
     "fastapi>=0.119.1",
+    "pillow>=12.0.0",
+    "python-dotenv>=1.2.1",
     "sqlalchemy>=2.0.44",
+    "torch>=2.9.0",
+    "torchvision>=0.24.0",
     "uvicorn[standard]>=0.38.0",
 ]
 

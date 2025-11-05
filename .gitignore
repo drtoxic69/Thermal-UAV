@@ -2,6 +2,9 @@
 *.py[oc]
 *.egg-info
 
+# datasets
+data/
+
 ### macOS ###
 # General
 .DS_Store
