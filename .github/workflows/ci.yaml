@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  lint-type-format-build:
+  lint-type-format-build-test:
 
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'uv'
 
       # 3. Installs uv
       - name: Install uv
@@ -31,7 +32,7 @@ jobs:
         
       # 5. Installs all CI tools into the virtual environment
       - name: Install Tools (Ruff, Pyright, Pytest)
-        run: uv pip install ruff pyright pytest
+        run: uv pip install ruff pyright pytest python-dotenv
 
       # 6. Checks if the project is buildable as a package
       - name: Check Package Build (uv build)
@@ -52,3 +53,7 @@ jobs:
       # 10. Runs the type checker from within the virtual environment
       - name: Run Type Checker (Pyright)
         run: uv run pyright .
+
+      # 11. NEW: Runs all automated tests
+      - name: Run Tests (Pytest)
+        run: uv run pytest
