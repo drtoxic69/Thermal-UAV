@@ -836,6 +836,15 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyterlab-horizon-theme"
+version = "4.0.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/70/bd/3b7ab3165016e073d2a6f494cb19c146420259501f02ff75a261e76ce4ca/jupyterlab_horizon_theme-4.0.2.tar.gz", hash = "sha256:0f5f4c7d0876f3b2ad7e730493e348964d54e23bc312fd491d2bb072d15410fb", size = 496979, upload-time = "2023-11-22T19:41:04.707Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cc/b0/655cf4771a328b1d234af1327d3d96cc5416eb0636e68aa39589f8d98953/jupyterlab_horizon_theme-4.0.2-py3-none-any.whl", hash = "sha256:560a04890ff74e8d356d50d5154d0c72bbfa057aff0ee64fef957f633b0b8a52", size = 156649, upload-time = "2023-11-22T19:41:02.253Z" },
+]
+
+[[package]]
 name = "jupyterlab-pygments"
 version = "0.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1878,6 +1887,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
     { name = "jupyter" },
+    { name = "jupyterlab-horizon-theme" },
     { name = "matplotlib" },
     { name = "pillow" },
     { name = "python-dotenv" },
@@ -1898,6 +1908,7 @@ dev = [
 requires-dist = [
     { name = "fastapi", specifier = ">=0.119.1" },
     { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "jupyterlab-horizon-theme", specifier = ">=4.0.2" },
     { name = "matplotlib", specifier = ">=3.10.7" },
     { name = "pillow", specifier = ">=12.0.0" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
