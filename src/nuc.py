@@ -6,9 +6,10 @@ targeting Fixed Pattern Noise (FPN) such as vertical striping, which is
 common in uncooled thermal sensors.
 """
 
+import logging
+
 import torch
 import torch.nn.functional as F
-import logging
 
 log = logging.getLogger(__name__)
 
