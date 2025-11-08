@@ -5,6 +5,9 @@
 # datasets
 data/
 
+# Ultralytics training logs
+runs/
+
 ### macOS ###
 # General
 .DS_Store
