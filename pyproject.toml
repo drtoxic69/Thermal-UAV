@@ -14,6 +14,8 @@ dependencies = [
     "sqlalchemy>=2.0.44",
     "torch>=2.9.0",
     "torchvision>=0.24.0",
+    "tqdm>=4.67.1",
+    "ultralytics>=8.3.226",
     "uvicorn[standard]>=0.38.0",
 ]
 
