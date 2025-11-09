@@ -11,6 +11,7 @@ dependencies = [
     "matplotlib>=3.10.7",
     "pillow>=12.0.0",
     "python-dotenv>=1.2.1",
+    "sahi>=0.11.36",
     "sqlalchemy>=2.0.44",
     "torch>=2.9.0",
     "torchvision>=0.24.0",
